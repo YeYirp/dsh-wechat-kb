@@ -1,0 +1,119 @@
+{
+  "name": "dsh-wechat-kb",
+  "version": "1.0.0",
+  "description": "微信知识库问答：DSH 里和微信双向互通，同时带本地知识库（导入文件/图片OCR/音频转写、检索、复习提示词）。由 dsh-wechat-bridge 1.4.0 与 dsh-project-knowledge-review 0.5.14 合并而成，两个功能原样保留，设置页合成一页。",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/host.js",
+  "exports": {
+    ".": "./lib/host.js",
+    "./client": "./lib/client.js",
+    "./locale/en.json": "./locale/en.json",
+    "./locale/zh-CN.json": "./locale/zh-CN.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "bridge",
+    "docs",
+    "locale",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "slots",
+        "connection",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-api-remotes"
+      ]
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "wechat",
+    "weixin",
+    "bridge",
+    "knowledge-base"
+  ],
+  "author": "Yuuyuko-uu, dsh-project-knowledge-review contributors",
+  "contributors": [
+    {
+      "name": "thawline",
+      "url": "https://github.com/thawline"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thawline/dsh-wechat-bridge.git"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "1.2.0",
+    "unpdf": "2.2.1"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-api-remotes": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-client-connection": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-client-runtime": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-client-ui-primitives": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-client-ui-settings": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-credentials": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-host-webserver": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-settings": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-system-prompt": ">=0.1.0-rc.6 <0.3.0-0",
+    "@deepseek-ai/dsh-tools": ">=0.1.0-rc.6 <0.3.0-0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-api-remotes": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-connection": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-runtime": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-primitives": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-settings": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-credentials": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-host-webserver": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-settings": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-system-prompt": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  }
+}

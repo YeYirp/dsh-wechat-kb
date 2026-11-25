@@ -1,0 +1,22 @@
+# dsh-wechat-kb
+#
+# 由 dsh-wechat-bridge 1.4.0 与 dsh-project-knowledge-review 0.5.14 合并：
+# 一个插件、一个条目、一个设置页（微信在上，知识复习在下）。
+# 两个功能本身的代码与路由路径原样保留；仅设置命名空间跟随条目 id 变为 dsh-wechat-kb。
+- insert:
+    - id: dsh-wechat-kb
+      name: 'dsh-wechat-kb'
+      config:
+        enabled: true
+        answerPolicy: reference
+        localStorePath: '${DSH_HOME}/project-knowledge-review/knowledge.json'
+        projectName: 我的知识库
+        requestTimeoutMs: 120000
+        ocrEnabled: true
+        ocrBaseUrl: http://127.0.0.1:8326/v1
+        ocrModel: deepseek-official/deepseek-flash
+        ocrApiKeyEnv: DSH_KNOWLEDGE_OCR_API_KEY
+        asrEnabled: false
+        asrBaseUrl: https://api.openai.com/v1
+        asrModel: whisper-1
+        asrApiKeyEnv: DSH_KNOWLEDGE_ASR_API_KEY
