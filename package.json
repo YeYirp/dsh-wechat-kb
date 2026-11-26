@@ -1,6 +1,6 @@
 {
   "name": "dsh-wechat-kb",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "微信知识库问答：DSH 里和微信双向互通，同时带本地知识库（导入文件/图片OCR/音频转写、检索、复习提示词）。由 dsh-wechat-bridge 1.4.0 与 dsh-project-knowledge-review 0.5.14 合并而成，两个功能原样保留，设置页合成一页。",
   "license": "MIT",
   "type": "module",

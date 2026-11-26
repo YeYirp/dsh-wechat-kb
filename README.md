@@ -4,12 +4,12 @@
 
 | 项目 | 状态 |
 | --- | --- |
-| 源码版本 | 1.0.1 |
+| 源码版本 | 1.0.2 |
 | 许可 | MIT |
 | 宿主 | DSH（cordis bundle，条目 id `dsh-wechat-kb`） |
 | 来源 | 由两个上游插件合并，功能实现基本沿用 |
 
-> **版本提醒**：仓库自带的市场目录 `plugins.json` 与安装包 `tarballs/dsh-wechat-kb-1.0.0.tgz` 仍标 1.0.0。要拿到 1.0.1 的修复，用下面的 git 安装方式，或自己 `npm pack`。
+> **版本提醒**：仓库自带的市场目录 `plugins.json` 与安装包 `tarballs/dsh-wechat-kb-1.0.0.tgz` 仍标 1.0.0。要拿到 1.0.2 的修复，用下面的 git 安装方式，或自己 `npm pack`。
 
 ![知识库概览](docs/images/knowledge-library-overview.png)
 
@@ -23,15 +23,15 @@
 ## 安装
 
 ```bash
-# 推荐：从 git 安装（源码 1.0.1）
+# 推荐：从 git 安装（源码 1.0.2）
 dsh plugin install git+https://github.com/YeYirp/dsh-wechat-kb.git
 
 # 或在仓库根目录重新打包后安装
 npm pack
-dsh plugin install ./dsh-wechat-kb-1.0.1.tgz
+dsh plugin install ./dsh-wechat-kb-1.0.2.tgz
 ```
 
-未发布到 npm registry。插件市场用「自定义目录」加入：在「目录 / Catalogs」添加本仓库根目录的 `plugins.json`（或 clone 到本地后的文件路径），刷新后在「发现」里搜「微信知识库问答」。市场目录随附的 tarball 是 1.0.0，如需 1.0.1 请用 git 安装或自行 `npm pack`。
+未发布到 npm registry。插件市场用「自定义目录」加入：在「目录 / Catalogs」添加本仓库根目录的 `plugins.json`（或 clone 到本地后的文件路径），刷新后在「发现」里搜「微信知识库问答」。市场目录随附的 tarball 是 1.0.0，如需 1.0.2 请用 git 安装或自行 `npm pack`。
 
 ## 首次使用
 
