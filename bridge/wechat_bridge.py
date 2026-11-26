@@ -172,27 +172,59 @@ def clean_text(text):
     return " ".join(t.split()).strip()
 
 
-# WeChat 4.x 有些文本消息在库里是 zstd 压缩帧；wechatauto 只认第三方
-# zstandard/zstd 包，本机没装就只剩「[文本]」占位。Python 3.14+ 自带
-# compression.zstd，用它把这几种消息还原出来，避免整条消息被当成空消息丢掉。
-try:
+# WeChat 4.x 有些文本消息在库里是 zstd 帧（帧头 28 b5 2f fd）。Python 3.14+
+# 自带 compression.zstd；更早的版本靠第三方 zstandard（装依赖会一起装上）。
+# 两种都没有时必须当成「读不出来」，绝不能把压缩帧当明文塞给 DSH —— 那样只会
+# 得到半截乱码（真实案例：问句里的「10 月我迟到了 5 次」整段被吞掉）。
+try:  # Python 3.14+ 标准库
     from compression import zstd as _STDLIB_ZSTD
 except Exception:  # pragma: no cover - 老 Python 没有这个标准库
     _STDLIB_ZSTD = None
 
+try:  # 第三方包，pip 装得上
+    import zstandard as _ZSTANDARD
+except Exception:  # pragma: no cover
+    _ZSTANDARD = None
+
+_ZSTD_MAGIC = b"\x28\xb5\x2f\xfd"
+
+
+def zstd_status():
+    if _STDLIB_ZSTD is not None:
+        return "Python 自带 compression.zstd"
+    if _ZSTANDARD is not None:
+        return "zstandard %s" % getattr(_ZSTANDARD, "__version__", "?")
+    return "缺失（压缩文本读不出来，请点「装依赖」）"
+
+
+def zstd_decompress(raw):
+    """还原一帧 zstd；两种实现都用不了时返回 None。"""
+    if _STDLIB_ZSTD is not None:
+        try:
+            return _STDLIB_ZSTD.ZstdDecompressor().decompress(raw)
+        except Exception:
+            pass
+    if _ZSTANDARD is not None:
+        try:
+            return _ZSTANDARD.ZstdDecompressor().decompress(raw)
+        except Exception:
+            pass
+    return None
+
 
 def decode_wx_text(data):
-    """把微信库里的文本内容（可能是 zstd 帧）还原成字符串；失败返回空串。"""
+    """把微信库里的文本内容（可能是 zstd 帧）还原成字符串；读不出来时返回空串。"""
     if not isinstance(data, (bytes, bytearray)):
         return str(data or "")
     raw = bytes(data)
     if not raw:
         return ""
-    if raw[:4] == b"\x28\xb5\x2f\xfd" and _STDLIB_ZSTD is not None:
-        try:
-            return _STDLIB_ZSTD.ZstdDecompressor().decompress(raw).decode("utf-8", "ignore")
-        except Exception:
+    if raw[:4] == _ZSTD_MAGIC:
+        out = zstd_decompress(raw)
+        if out is None:
+            log("⚠ 这条是压缩文本，本机解不开（%s），先跳过" % zstd_status())
             return ""
+        return out.decode("utf-8", "ignore")
     try:
         return raw.decode("utf-8", "ignore")
     except Exception:
@@ -348,6 +380,23 @@ def main():
         except Exception as e:
             log("写日记失败：", repr(e))
 
+    def row_text(username, m):
+        """一条消息的正文。压缩文本在 wechatauto 那儿只剩「[文本]」占位，
+        这里按 local_id 取原始行再解一次 zstd，避免上下文里全是「[文本]」。"""
+        raw = m.get("content") or ""
+        if isinstance(raw, (bytes, bytearray)):
+            return decode_wx_text(raw)
+        txt = str(raw)
+        if txt.strip() in ("", "[文本]"):
+            try:
+                row = db.get_message_row(username, m.get("local_id"), shard=m.get("shard"))
+                fixed = decode_wx_text((row or {}).get("content") or b"")
+                if fixed:
+                    return fixed
+            except Exception as error:  # noqa: BLE001
+                log("还原上下文里的压缩文本失败：%r" % (error,))
+        return txt
+
     def group_context(username, chat, limit):
         """那群最近在聊什么 —— 拼成一段给模型看。"""
         if limit <= 0:
@@ -368,7 +417,7 @@ def main():
         for m in rows:
             if (m.get("type") or "") != "文本":
                 continue
-            txt = clean_text(m.get("content") or "")
+            txt = clean_text(row_text(username, m))
             if not txt or txt.startswith("<"):
                 continue
             ts = float(m.get("create_time") or 0)
@@ -2555,6 +2604,7 @@ def main():
     listener.add_all(on_message)
     listener.start()
     log("监听已启动（0.4 秒一轮）")
+    log("压缩文本解码：%s" % zstd_status())
 
     load_memes()
 
