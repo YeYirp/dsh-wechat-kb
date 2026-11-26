@@ -837,6 +837,10 @@ def main():
             return u
         except Exception as e:
             log("取 UIA 引擎失败：", repr(e))
+            try:
+                log("  UIA 异常详情：\n" + traceback.format_exc(limit=6))
+            except Exception:
+                pass
             _记UIA失败(e)
             return None
 
@@ -1929,6 +1933,10 @@ def main():
                 return {"ok": True}
             except Exception as e:
                 log("✗ 发送失败（%s）：%r" % (chat, e))
+                try:
+                    log("  发送异常详情：\n" + traceback.format_exc(limit=6))
+                except Exception:
+                    pass
                 gui_box["gui"] = None    # 下次重建
                 return {"ok": False, "说": repr(e)}
             finally:

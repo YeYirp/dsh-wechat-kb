@@ -1,0 +1,27 @@
+2026-11-26 08:43:14 [wechatauto] [INFO] [rhythm.py:133]  拟人节奏档位：fast
+2026-11-26 08:47:25 [wechatauto] [INFO] [rhythm.py:133]  拟人节奏档位：fast
+2026-11-26 08:47:26 [wechatauto] [DEBUG] [guia.py:301]  WinInput 初始化，屏幕尺寸：2240x1400
+2026-11-26 08:47:26 [wechatauto] [INFO] [guia.py:932]  已加载布局校准（wide）：sidebar_ratio=0.220
+2026-11-26 08:47:26 [wechatauto] [INFO] [guia.py:548]  WeChatGUI 初始化成功：hwnd=67402, render=67404, rect=(-31989, -32000, -30520, -31040)
+2026-11-26 08:47:26 [wechatauto] [INFO] [accessibility.py:571]  热激活 UIA：PID=16832 Weixin.dll+0xb4aa448: 0 -> 1
+2026-11-26 08:47:26 [wechatauto] [INFO] [accessibility.py:579]  UIA 树已物化，已记录 gate RVA：Weixin.dll+0xb4aa448
+2026-11-26 08:47:27 [wechatauto] [INFO] [guia.py:1576]  已启用 UIA 驱动（混合路径：UIA 优先，OCR 兜底）
+2026-11-26 08:48:49 [wechatauto] [INFO] [rhythm.py:133]  拟人节奏档位：fast
+2026-11-26 08:48:50 [wechatauto] [DEBUG] [guia.py:301]  WinInput 初始化，屏幕尺寸：2240x1400
+2026-11-26 08:48:50 [wechatauto] [INFO] [guia.py:932]  已加载布局校准（wide）：sidebar_ratio=0.220
+2026-11-26 08:48:50 [wechatauto] [INFO] [guia.py:548]  WeChatGUI 初始化成功：hwnd=67402, render=67404, rect=(642, 259, 2111, 1219)
+2026-11-26 08:48:51 [wechatauto] [INFO] [guia.py:1576]  已启用 UIA 驱动（混合路径：UIA 优先，OCR 兜底）
+2026-11-26 08:51:24 [wechatauto] [DEBUG] [uia_driver.py:1214]  聊天页那一片已经渲染，不点导航栏
+2026-11-26 08:58:11 [wechatauto] [DEBUG] [uia_driver.py:1214]  聊天页那一片已经渲染，不点导航栏
+2026-11-26 08:58:20 [wechatauto] [INFO] [guia.py:1153]  自动最小化遮挡窗口 4 个（累计待还原 4 个）
+2026-11-26 08:58:21 [wechatauto] [INFO] [guia.py:459]  winsdk/winrt 都不可用：OCR 停用（Python 3.11+ 请安装 winrt-runtime 与 winrt-Windows.Media.Ocr 等分包）
+2026-11-26 08:58:30 [wechatauto] [WARNING] [guia.py:1097]  落点窗口不属于微信（进程 25280 != 16832），已跳过这次投递：803,739
+2026-11-26 08:58:30 [wechatauto] [DEBUG] [guia.py:1633]  侧栏未确认打开 speedtest@chatroom，重试
+2026-11-26 08:58:41 [wechatauto] [WARNING] [guia.py:1097]  落点窗口不属于微信（进程 4680 != 16832），已跳过这次投递：803,739
+2026-11-26 08:58:41 [wechatauto] [DEBUG] [guia.py:1633]  侧栏未确认打开 speedtest@chatroom，重试
+2026-11-26 08:58:43 [wechatauto] [WARNING] [guia.py:1097]  落点窗口不属于微信（进程 4680 != 16832），已跳过这次投递：803,739
+2026-11-26 08:58:43 [wechatauto] [DEBUG] [guia.py:1633]  侧栏未确认打开 speedtest@chatroom，重试
+2026-11-26 08:58:44 [wechatauto] [WARNING] [guia.py:1097]  落点窗口不属于微信（进程 4680 != 16832），已跳过这次投递：690,950
+2026-11-26 08:58:46 [wechatauto] [WARNING] [guia.py:1097]  落点窗口不属于微信（进程 4680 != 16832），已跳过这次投递：691,932
+2026-11-26 08:58:48 [wechatauto] [WARNING] [guia.py:1097]  落点窗口不属于微信（进程 4680 != 16832），已跳过这次投递：695,933
+2026-11-26 08:58:51 [wechatauto] [DEBUG] [uia_driver.py:1214]  聊天页那一片已经渲染，不点导航栏
