@@ -8,7 +8,7 @@
     "test": "node --test lib/*.test.js lib/knowledge/*.test.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "main": "lib/host.js",
   "exports": {
