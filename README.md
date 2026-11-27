@@ -4,7 +4,7 @@
 
 | 项目 | 状态 |
 | --- | --- |
-| 源码版本 | 1.0.4 |
+| 源码版本 | 1.0.5 |
 | 许可 | MIT |
 | 宿主 | DSH（cordis bundle，条目 id `dsh-wechat-kb`） |
 | 来源 | 由两个上游插件合并，功能实现基本沿用 |
@@ -21,15 +21,15 @@
 ## 安装
 
 ```bash
-# 推荐：从 git 安装（源码 1.0.4）
+# 推荐：从 git 安装（源码 1.0.5）
 dsh plugin install git+https://github.com/YeYirp/dsh-wechat-kb.git
 
 # 或在仓库根目录重新打包后安装
 npm pack
-dsh plugin install ./dsh-wechat-kb-1.0.4.tgz
+dsh plugin install ./dsh-wechat-kb-1.0.5.tgz
 ```
 
-未发布到 npm registry。插件市场用「自定义目录」加入：在「目录 / Catalogs」添加本仓库根目录的 `plugins.json`（或 clone 到本地后的文件路径），刷新后在「发现」里搜「微信知识库问答」。市场目录与 tarball 已同步到 1.0.4。
+未发布到 npm registry。插件市场用「自定义目录」加入：在「目录 / Catalogs」添加本仓库根目录的 `plugins.json`（或 clone 到本地后的文件路径），刷新后在「发现」里搜「微信知识库问答」。市场目录与 tarball 已同步到 1.0.5。
 
 ## 首次使用
 
@@ -43,7 +43,7 @@ dsh plugin install ./dsh-wechat-kb-1.0.4.tgz
 
 - 「主人 / 外人只能聊天」在当前版本不区分主人：微信来的一律按知识库回答，且不能调用知识库检索以外的工具。
 - 入站默认拒绝只管「转入 DSH」这一步；Python 桥接仍按自身配置记录群聊日记、保存入站图片。
-- 源码自测命令：`node --test lib/*.test.js lib/knowledge/*.test.js`。纯 Node 环境有测试因缺少宿主 peer 依赖或沿用上游旧默认值而失败；在 DSH 宿主内更接近真实运行状态。
+- 源码自测命令：`npm test`。在 DSH 宿主内运行更接近真实运行状态。
 
 ## 合并做了哪些改动
 
