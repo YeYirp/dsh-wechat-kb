@@ -9,8 +9,6 @@
 | 宿主 | DSH（cordis bundle，条目 id `dsh-wechat-kb`） |
 | 来源 | 由两个上游插件合并，功能实现基本沿用 |
 
-> **版本提醒**：仓库自带的市场目录 `plugins.json` 与安装包 `tarballs/dsh-wechat-kb-1.0.0.tgz` 仍标 1.0.0。要拿到 1.0.4 的修复，用下面的 git 安装方式，或自己 `npm pack`。
-
 ![知识库概览](docs/images/knowledge-library-overview.png)
 
 ## 能做什么
@@ -31,7 +29,7 @@ npm pack
 dsh plugin install ./dsh-wechat-kb-1.0.4.tgz
 ```
 
-未发布到 npm registry。插件市场用「自定义目录」加入：在「目录 / Catalogs」添加本仓库根目录的 `plugins.json`（或 clone 到本地后的文件路径），刷新后在「发现」里搜「微信知识库问答」。市场目录随附的 tarball 是 1.0.0，如需 1.0.4 请用 git 安装或自行 `npm pack`。
+未发布到 npm registry。插件市场用「自定义目录」加入：在「目录 / Catalogs」添加本仓库根目录的 `plugins.json`（或 clone 到本地后的文件路径），刷新后在「发现」里搜「微信知识库问答」。市场目录与 tarball 已同步到 1.0.4。
 
 ## 首次使用
 
@@ -43,10 +41,8 @@ dsh plugin install ./dsh-wechat-kb-1.0.4.tgz
 
 ## 已知限制
 
-- 设置页「检查更新」读的是上游 `thawline/dsh-wechat-bridge` 版本，会持续误报「有新版本」，提示的命令会装成不带知识库的上游插件。
 - 「主人 / 外人只能聊天」在当前版本不区分主人：微信来的一律按知识库回答，且不能调用知识库检索以外的工具。
 - 入站默认拒绝只管「转入 DSH」这一步；Python 桥接仍按自身配置记录群聊日记、保存入站图片。
-- `package.json` 的 `repository` 字段仍指向上游仓库，不影响安装，但元数据跳转会指向错误项目。
 - 源码自测命令：`node --test lib/*.test.js lib/knowledge/*.test.js`。纯 Node 环境有测试因缺少宿主 peer 依赖或沿用上游旧默认值而失败；在 DSH 宿主内更接近真实运行状态。
 
 ## 合并做了哪些改动

@@ -2,7 +2,7 @@
   "name": "dsh-wechat-kb",
   "url": "https://github.com/YeYirp/dsh-wechat-kb",
   "source": "https://github.com/YeYirp/dsh-wechat-kb",
-  "updated": "2026-11-25",
+  "updated": "2026-11-27",
   "count": 1,
   "categories": {
     "tools": { "zh": "工具与能力", "en": "Tools & Capabilities" },
@@ -20,10 +20,10 @@
         "en": "WeChat + local knowledge base for DSH: send and receive WeChat messages, and keep a local knowledge base (import Word/Excel/PDF/images/audio, image OCR, retrieval with citations). A straight merge of dsh-wechat-bridge and dsh-project-knowledge-review with one combined settings page."
       },
       "npm": null,
-      "version": "1.0.0",
+      "version": "1.0.4",
       "install": "github:YeYirp/dsh-wechat-kb",
       "git": "git+https://github.com/YeYirp/dsh-wechat-kb.git",
-      "tarball": "tarballs/dsh-wechat-kb-1.0.0.tgz",
+      "tarball": "tarballs/dsh-wechat-kb-1.0.4.tgz",
       "added": "2026-11-25"
     }
   ]

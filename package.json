@@ -54,7 +54,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thawline/dsh-wechat-bridge.git"
+    "url": "git+https://github.com/YeYirp/dsh-wechat-kb.git"
   },
   "dependencies": {
     "@napi-rs/canvas": "1.2.0",
